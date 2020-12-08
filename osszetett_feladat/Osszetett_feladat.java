@@ -25,9 +25,9 @@ public class Osszetett_feladat {
         System.out.println(" VDZ 113C\n");
         
         Scanner bemenet = new Scanner(System.in);
-        char valasz = 0;
+        char valasz;
         do{
-            int darabszam = (int) (Math.random() * 10) + 30;
+            int darabszam = (int) (Math.random() * 10 + 30);
         
         int szamok1[] = new int[darabszam];
         int szamok2[] = new int[darabszam];
@@ -37,75 +37,53 @@ public class Osszetett_feladat {
             szamok2[i] = (int) (Math.random() * -50) + 50;
         }
         System.out.println("\nA szamok1 tömb elemei: ");
-        for (int i = 0; i < darabszam; i++) {
+        for (int i = 0; i < szamok1.length; i++) {
             System.out.print(String.format("%,4d", szamok1[i]) + " ");
         }
         System.out.println("\nA szamok2 tömb elemei: ");
-        for (int i = 0; i < darabszam; i++) {
+        for (int i = 0; i < szamok2.length; i++) {
             System.out.print(String.format("%,4d", szamok2[i]) + " ");
         }
-
         int ujTomb[] = new int[darabszam];
-        int ujTombdb = 0;
         for (int i = 0; i < darabszam; i++) {
             if (szamok1[i] % 5 == 0) {
-                ujTomb[ujTombdb++] = szamok1[i];
+                ujTomb[i] = szamok1[i];
             }
-            if (szamok2[i] % 5 == 0) {
-                ujTomb[ujTombdb++] = szamok2[i];
-            }
-
+        for (int j = 0; j < darabszam; j++) {
+            if (szamok2[j] % 5 == 0){
+                ujTomb[j+1] = szamok2[j];
+            }    
+        }    
         }
         System.out.println("\nAz ujTomb elemei: ");
-        for (int i = 0; i < ujTombdb; i++) {
+        for (int i = 0; i < ujTomb.length; i++) {
             System.out.print(String.format("%,4d", ujTomb[i]) + " ");
         }
         
-        for (int i = 0; i < ujTombdb; i++) {
+        int legkisebb = ujTomb[0];
+        int legnagyobb = ujTomb[0];
+            for (int i = 1; i < ujTomb.length; i++) { 
+                if (ujTomb[i] > legnagyobb) {
+                    legnagyobb = ujTomb[i];
+                }
+            }
+        for (int i = 0; i < ujTomb.length; i++) {
+            if (ujTomb[i] < legkisebb) {
+                legkisebb = ujTomb[i];
+            }
+        }
+        
+            System.out.println("\nA legnagyobb elem: " + legnagyobb + ", a legkisebb elem: " + legkisebb);
+
+        for (int i = 0; i < ujTomb.length; i++) {
             if (ujTomb[i] == 0) {
                 System.out.println("Az ujTomb 0-t tartalmaz");
-            }
-        }
-        int legnagyobb = szamok1[0];
-        int legkisebb = szamok1[0];
-        for (int i = 0; i < darabszam; i++) {
-            if (szamok1[i] > legnagyobb) {
-                legnagyobb = szamok1[i];
-            }
-        }
-        for (int i = 0; i < darabszam; i++) {
-            if (szamok1[i] < legkisebb) {
-                legkisebb = szamok1[i];
+                break;
             }
         }
         
-        if (legnagyobb % legkisebb == 0) {
-            System.out.println("\nA szamok1 tömb legnagyobb eleme a legkisebb többszöröse");
-        }
-        else {
-            System.out.println("\nA szamok1 tömb legnagyobb eleme nem többszöröse a legkisebbnek");
-        }
-        int legnagyobb2 = szamok2[0];
-        int legkisebb2 = szamok2[0];
-        for (int i = 0; i < darabszam; i++) {
-            if (szamok1[i] > legnagyobb2) {
-                legnagyobb2 = szamok1[i];
-            }
-        }
-        for (int i = 0; i < darabszam; i++) {
-            if (szamok1[i] < legkisebb2) {
-                legkisebb2 = szamok1[i];
-            }
-        }
-        
-        if (legnagyobb2 % legkisebb2 == 0) {
-            System.out.println("\nA szamok2 tömb legnagyobb eleme a legkisebb többszöröse");
-        }
-        else {
-            System.out.println("\nA szamok2 tömb legnagyobb eleme nem többszöröse a legkisebbnek");
-        }
-            System.out.println("Újra lefuttatja a programot? i/n: ");
-            valasz = bemenet.next().charAt(0);
+        System.out.println("Újra lefuttatja a programot? i/n: ");
+        valasz = bemenet.next().charAt(0);
     } while ((valasz == 'i') || (valasz == 'I'));
 }
 }
