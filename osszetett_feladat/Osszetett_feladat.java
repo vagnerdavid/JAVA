@@ -24,7 +24,7 @@ public class Osszetett_feladat {
         System.out.println("\n ÖSSZETETT FELADATSOR\n");
         System.out.println(" VDZ 113C\n");
         
-        Scanner bemenet = new Scanner(System.in);
+                Scanner bemenet = new Scanner(System.in);
         char valasz;
         do{
             int darabszam = (int) (Math.random() * 10 + 30);
@@ -33,8 +33,8 @@ public class Osszetett_feladat {
         int szamok2[] = new int[darabszam];
 
         for (int i = 0; i < darabszam; i++) {
-            szamok1[i] = (int) (Math.random() * -50) + 50;
-            szamok2[i] = (int) (Math.random() * -50) + 50;
+            szamok1[i] = (int) (Math.random() * 100) + -50;
+            szamok2[i] = (int) (Math.random() * 100) + -50;
         }
         System.out.println("\nA szamok1 tömb elemei: ");
         for (int i = 0; i < szamok1.length; i++) {
@@ -85,5 +85,5 @@ public class Osszetett_feladat {
         System.out.println("Újra lefuttatja a programot? i/n: ");
         valasz = bemenet.next().charAt(0);
     } while ((valasz == 'i') || (valasz == 'I'));
-}
+  }
 }
